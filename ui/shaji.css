@@ -1,0 +1,27 @@
+big {
+    font-size: 130% ;
+}
+
+screenM {
+    width: 40% ;
+}
+
+/* @media only screen and (max-width: 768px) {
+    screenM {
+        width: 90% ;
+    }
+}
+ */
+@media (min-width: 769px) {
+    .screenM {
+        width: 48% ;
+    }
+
+    .mflex {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+@media screen and (max-width: 600px) {
+}  
