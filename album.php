@@ -129,7 +129,7 @@
             </script>',  str_replace (' ', '_',$t)) ;
           }
           // print ($active) ;
-          printf ('<script>%s.push ({url: "/media/%s/%s"}); </script>', $album_js, $album, $t) ;
+          printf ('<script>%s.push ({url: "/media/%s/%s"}); </script>', $album_js, $dir, $t) ;
           echo (sprintf ('
             <div class="list-group-item list-group-item-action mflex justify-content-between %s">
               <a class="%s" href="javascript: play_track (\'media/%s/%s\')" >%s</a>&nbsp&nbsp&nbsp&nbsp
