@@ -54,7 +54,13 @@
   $cover = $json ["cover"] ;
   $description = $json ["description"] ;
 
-  $tracks = scandir ('media/' . $dir) ;
+  // $tracks = scandir ('media/' . $dir) ;
+  // sort by last modified
+  $tracks = glob('media/' . $dir . '/*') ;
+  usort($tracks, function($x, $y) {
+    return filemtime($x) < filemtime($y);
+  });
+
   // print ($album) ;
   // var_dump ($tracks) ;
   printf ('<script>var %s = [];', $album_js);
