@@ -13,6 +13,10 @@ screenM {
 }
  */
 @media (min-width: 769px) {
+    .cover {
+        width: 40% ;
+    }
+
     .screenM {
         width: 48% ;
     }
@@ -23,5 +27,8 @@ screenM {
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
+    .cover {
+        width: 90% ;
+    }
 }  

@@ -107,7 +107,7 @@
       ?>
   >
     <h5 class="card-title">Released: <?php echo $year ; ?></h5>
-    <img width="40%" style="border-radius: 10px;box-shadow: 10px 10px 8px grey"
+    <img width="90%" class="cover" style="border-radius: 10px;box-shadow: 10px 10px 8px grey"
       <?php if ($cover != NULL) echo 'src="/media/' . $dir . '/'. $cover . '"'; ?> />
       <?php if ($cover != NULL) echo '<br><br>' ;?>
     <p class="card-text">
@@ -126,6 +126,7 @@
           if (strpos ($t, ".mp3") == false && strpos ($t, ".ogg") == false)
             continue ;
           $active = ' ' ;
+          // printf ('console.log ("%s")', $t) ;
           if (strpos (strtolower ($t), $song) !== false && $active_ === false) {
             $active = 'active text-white' ;
             $active_ = true ;
@@ -138,17 +139,17 @@
           printf ('<script>%s.push ({url: "/media/%s/%s"}); </script>', $album_js, $dir, $t) ;
           echo (sprintf ('
             <div class="list-group-item list-group-item-action mflex justify-content-between %s">
-              <a class="%s" href="javascript: play_track (\'media/%s/%s\')" >%s</a>&nbsp&nbsp&nbsp&nbsp
+              <a class="%s" href="javascript: play_track (\'%s\')" >%s</a>&nbsp&nbsp&nbsp&nbsp
               <div>
                 <div class="d-flex">
-                  <a href="javascript: play_track (\'media/%s/%s\')" class="text-white btn btn-success fa fa-play"></a>
-                  <a href="javascript: play_track (\'media/%s/%s\', \'%s\', true)" class="text-white btn btn-primary fa fa-plus"></a>
-                  <a download href="media/%s/%s" class="text-white btn btn-info fa fa-download"></a>
+                  <a href="javascript: play_track (\'%s\')" class="text-white btn btn-success fa fa-play"></a>
+                  <a href="javascript: play_track (\'%s\', \'%s\', true)" class="text-white btn btn-primary fa fa-plus"></a>
+                  <a download href="%s" class="text-white btn btn-info fa fa-download"></a>
                   <div id="%s"></div>
                 </div>
               </div>
             </div>',
-            $active, $active, $dir, $t, pathinfo($t, PATHINFO_FILENAME), $dir, $t, $dir, $t, str_replace (' ', '_',$t), $dir, $t, str_replace (' ', '_',$t))) ;
+            $active, $active, $t, pathinfo(basename ($t), PATHINFO_FILENAME), $t, $t, str_replace (' ', '_',basename ($t)), $t, str_replace (' ', '_', basename ($t)))) ;
         }
         ?>
       
