@@ -7,7 +7,7 @@ function baseName(str)
 }
 
 function play_track (track, id = null, append = false) {
-    document.getElementById ("winamp_show").style.visibility = "visible"
+    // document.getElementById ("winamp_show").style.visibility = "visible"
     winamp.func = winamp.setTracksToPlay
     if (append == true) {
         winamp.func = winamp.appendTracks
@@ -29,6 +29,7 @@ function play_track (track, id = null, append = false) {
     }
 
     console.log ("winamp rendered to", id)
+    move_winamp ()
 }
 
 function docReady(fn) {
@@ -51,4 +52,22 @@ function scrollto_winamp () {
     y = c [1].split (', ') [1]
     window.scrollTo (x, y)
     console.log (x, y)
+}
+
+function move_winamp () {
+    y = window.pageYOffset + ((window.innerHeight - 348) / 2)
+    x = window.pageXOffset
+
+    if (window.pageXOffset == 0) {
+        x = x + (window.innerWidth / 2) - 137
+    }
+
+    winamp.store.dispatch({
+        type: "UPDATE_WINDOW_POSITIONS",
+        positions: {
+          main: { x: x, y: y },
+          playlist: { x: x, y: y + 232 },
+          equalizer: { x: x, y: y + 116 }
+        }
+      })
 }
