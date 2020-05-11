@@ -87,4 +87,8 @@
 
 </body>
 
+<script>
+  footer_hooks ()
+</script>
+
 </html>

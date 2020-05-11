@@ -165,5 +165,6 @@ require_once "ui/header.php" ;
   }
 ?>
 <?php
+require_once "play.php" ;
 require_once "ui/footer.php" ;
 ?>

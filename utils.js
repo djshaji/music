@@ -71,3 +71,38 @@ function move_winamp () {
         }
       })
 }
+
+function play_file () {
+    arg = escape (location.href.split ('?')[1].toLowerCase ().replace ('+', ' '))
+    a = document.getElementsByTagName ('a')
+    songs = []
+    id = null ;
+    for (f of a) {
+        if (f.hasAttribute ('download') && f.href.toLowerCase (). search (arg) != -1) {
+            f.parentElement.parentElement.parentElement.parentElement.parentElement.classList.remove ("collapse")
+            f.parentElement.parentElement.parentElement.classList.add ("active")
+            f.parentElement.parentElement.parentElement.firstElementChild.classList.add ("text-white")
+
+            f.scrollIntoView ()
+            window.scrollBy (0, -100)
+            songs.push ({url: f.href})
+            id = f.parentElement.lastElementChild.id
+        }
+            
+    }
+
+    if (songs.length != 0) {
+        document.getElementById ("play-play").onclick = function () {
+            play_track (songs, id)
+        }
+
+        document.getElementById ("play-body").innerHTML = "<h2><i class='fa fa-play'></i>&nbsp;&nbsp;&nbsp" + unescape (arg) + "</h2>"
+        document.getElementById ("page-title").innerText = unescape (arg) + ': Shaji Music'
+        $('#play').modal("show")
+
+    }
+}
+
+function footer_hooks () {
+    play_file ()
+}
