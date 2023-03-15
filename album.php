@@ -123,7 +123,7 @@
         foreach ($tracks as $t) {
           if ($t == '.' || $t == '..')
             continue ;
-          if (strpos ($t, ".mp3") == false && strpos ($t, ".ogg") == false)
+          if (strpos ($t, ".mp3") == false && strpos ($t, ".ogg") == false && strpos ($t, ".wav") == false)
             continue ;
           $active = ' ' ;
           // printf ('console.log ("%s")', $t) ;
